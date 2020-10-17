@@ -7,14 +7,14 @@ function ProjectPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/projects/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
         .then((results) => {
             return results.json();
         })
         .then((data) => {
             setProjectData(data);
         });
-    }, [id]);
+    }, []);
 
     return (
     <div>

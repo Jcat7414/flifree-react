@@ -19,12 +19,11 @@ function LoginForm() {
 
     const postData = async () => {        
         const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/api-token-auth/`, 
+        `${process.env.REACT_APP_API_URL}api-token-auth/`, 
         {
         method: "post",
         headers: {
-            "Content_Type": "application/json",
-            "Accept": "application/json"
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
         }
