@@ -7,14 +7,21 @@ function ProjectPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
+        const token = window.localStorage.getItem("token")
+
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`, {
+           headers: {
+           'Authorization': `Token ${token}`
+           }
+        })
         .then((results) => {
             return results.json();
         })
         .then((data) => {
             setProjectData(data);
         });
-    }, []);
+    }, [id]);
+    console.log(projectData)
 
     return (
     <div>
@@ -25,8 +32,8 @@ function ProjectPage() {
         <ul>
             {projectData.pledges.map((pledgeData, key) => {
                 return (
-                    <li>
-                        { pledgeData.pledge_quantity } from { pledgeData.pledge_supporter }
+                    <li key={key}>
+                        { pledgeData.pledge_quantity } from { pledgeData.owner }
                     </li>
                 );
             })}
