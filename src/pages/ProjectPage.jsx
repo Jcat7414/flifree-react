@@ -1,10 +1,12 @@
 import React, { useState, useEffect, Component } from "react";
 import { useParams } from "react-router-dom";
-// import NeedsFacilities from "../components/ProjectNeeds/NeedsFacilities";
-// import NeedsResources from "../components/ProjectNeeds/NeedsResources";
+import NeedsFacilities from "../components/ProjectNeeds/NeedsFacilities";
+import NeedsResources from "../components/ProjectNeeds/NeedsResources";
+import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
+import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
 
 function ProjectPage() {
-    const [projectData, setProjectData] = useState({ projects: [], pledges: [], updates: [], users: [] });
+    const [projectData, setProjectData] = useState({ projects: [], pledges: [], updates: [] });
     const { id } = useParams();
 
     useEffect(() => {
@@ -22,78 +24,6 @@ function ProjectPage() {
             setProjectData(data);
         });
     }, [id]);
-
-    class NeedsFacilities extends Component {
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                needsFacilities: projectData.needs_facilities
-            }
-        }
-    
-        render() {
-            return (
-                this.state.needsFacilities ?
-                <div>Needs Facilities</div> :
-                <div>No Facilities Needed</div>
-            )
-        }
-    };
-
-    class NeedsResources extends Component {
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                needsResources: projectData.needs_resources
-            }
-        }
-    
-        render() {
-            return (
-                this.state.needsResources ?
-                <div>Needs Resources</div> :
-                <div>No Resources Needed</div>
-            )
-        }
-    };
-
-    class NeedsExposure extends Component {
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                needsExposure: projectData.needs_exposure
-            }
-        }
-    
-        render() {
-            return (
-                this.state.needsExposure ?
-                <div>Needs Exposure</div> :
-                <div>No Exposure Needed</div>
-            )
-        }
-    };
-
-    class NeedsExpertise extends Component {
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                needsExpertise: projectData.needs_expertise
-            }
-        }
-    
-        render() {
-            return (
-                this.state.needsExpertise ?
-                <div>Needs Expertise</div> :
-                <div>No Expertise Needed</div>
-            )
-        }
-    };
 
     class ProjectStage extends Component {
         constructor(props) {
@@ -150,15 +80,14 @@ function ProjectPage() {
 
     return (
     <div>
-        <h3>{`Status: ${ projectData.is_open }`}</h3>
         <img src={ projectData.project_image } />
         <h2>{ projectData.project_name }</h2>
         <h3>{ projectData.founder }</h3>
         <p>{ projectData.project_intro }</p>
-        <NeedsFacilities />
-        <NeedsResources />
-        <NeedsExposure />
-        <NeedsExpertise />
+        <NeedsFacilities projectData={ projectData } />
+        <NeedsResources projectData={ projectData } />
+        <NeedsExposure projectData={ projectData } />
+        <NeedsExpertise projectData={ projectData } />
         <ProjectStage />
         <IsOpen />
         <h3>Founder Story:</h3>

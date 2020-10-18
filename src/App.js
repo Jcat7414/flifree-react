@@ -5,6 +5,8 @@ import Nav from "./components/Nav/Nav";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from './pages/LoginPage';
+import CreateProject from './components/Forms/CreateProjectForm';
+import CreateProjectPage from './pages/CreateProjectPage';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
           </Route>
           <Route path="/login">
             <LoginPage />
+          </Route>
+          <Route path="/createproject">
+            <CreateProjectPage />
           </Route>
           <Route path="/" exact>
             <HomePage />
