@@ -3,17 +3,20 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import HomePage from "./pages/HomePage";
+import About from './pages/AboutPage';
+import Privacy from './pages/PrivacyPolicyPage';
+import Terms from './pages/TermsConditionsPage';
+import ContactPage from './pages/ContactPage';
 import ProjectPage from "./pages/ProjectPage";
+import ProjectsPage from './pages/ProjectsPage';
+import PledgePage from './pages/PledgePage';
+import PledgesPage from './pages/PledgesPage';
 import UserPage from "./pages/UserPage";
 import UsersPage from "./pages/UsersPage";
 import LoginPage from './pages/LoginPage';
 import CreateProjectPage from './pages/CreateProjectPage';
 import ErrorPage from './pages/ErrorPage';
-import ProjectsPage from './pages/ProjectsPage';
-import About from './pages/AboutPage';
-import Privacy from './pages/PrivacyPolicyPage';
-import Terms from './pages/TermsConditionsPage';
-import ContactPage from './pages/ContactPage';
+
 import Footer from './components/Nav/Footer';
 
 function App() {
@@ -40,6 +43,12 @@ function App() {
           </Route>
           <Route path="/projects">
             <ProjectsPage />
+          </Route>
+          <Route path="/pledges">
+            <PledgePage />
+          </Route>
+          <Route path="/pledges/:id">
+            <PledgesPage />
           </Route>
           <Route path="/login">
             <LoginPage />

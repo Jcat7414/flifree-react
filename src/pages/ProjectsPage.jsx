@@ -23,7 +23,7 @@ function ProjectsPage() {
 
     return (
         <div id="project-list">
-            <h1>FLIFREE PROJECTS</h1>
+            <h1>FLI FREE PROJECTS</h1>
             {projectList.map((projectData, key) => {
                 return <ProjectCard key={key} projectData={projectData} />;
             })}

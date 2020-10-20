@@ -5,6 +5,7 @@ import NeedsResources from "../components/ProjectNeeds/NeedsResources";
 import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
 import { Link} from "react-router-dom";
+import { render } from "@testing-library/react";
 // import dateFormat from "dateformat";
 
 function ProjectPage() {
@@ -14,7 +15,7 @@ function ProjectPage() {
     useEffect(() => {
         const token = window.localStorage.getItem("token")
 
-        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
         headers: {
             "Content-Type": "application/json",
             'Authorization': `Token ${token}`
@@ -81,6 +82,15 @@ function ProjectPage() {
         }
     };
 
+        const pdate = new Date(projectData.date_created)
+        const projectDate = pdate.getDate() + " " + pdate.getMonth  () + " " + pdate.getFullYear();
+
+        // const udate = new Date(updateData.update_date)
+        // const updateDate = udate.getDate() + " " + udate.getMonth  () + " " + udate.getFullYear();
+
+    console.log(projectDate)
+    // console.log(updateDate)
+
     return (
     <div>
         <img src={ projectData.project_image } alt="" />
@@ -118,13 +128,13 @@ function ProjectPage() {
             {projectData.pledges.map((pledgeData, key) => {
                 return (
                     <li key={key}>
-                        { pledgeData.pledge_quantity } hours from Supporter # { pledgeData.owner }
+                        { pledgeData.pledge_quantity } hours from <Link to={`/users/${pledgeData.owner}`}>{ pledgeData.supporter }</Link>
                     </li>
                 );
             })}
         </ul>
         <IsOpen />
-        <p>Created on: { projectData.date_created }</p>
+        <p>Created on: { projectDate }</p>
         <p>Return to <Link to="/projects">All Projects</Link></p>
     </div>
     );

@@ -29,6 +29,8 @@ function UserPage() {
             <p>{ userData.location }</p>
             <p>{ userData.bio }</p>
             <p>See Projects for <Link to={`/projects/owner/${userData.username}`}>{ userData.first_name }</Link></p>
+            <p>See Pledges by <Link to={`/pledges/${userData.username}`}>{ userData.first_name }</Link></p>
+
         </div>
     );
 }
