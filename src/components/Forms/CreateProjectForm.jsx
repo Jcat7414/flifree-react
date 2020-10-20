@@ -7,16 +7,16 @@ function CreateProjectForm () {
         project_name: "",
         project_intro: "",
         project_goal: "",
-        needs_facilities: "",
-        needs_resources: "",
-        needs_exposure: "",
-        needs_expertise: "",
-        project_stage: "",
-        project_story: "",
+        needs_facilities: false,
+        needs_resources: false,
+        needs_exposure: false,
+        needs_expertise: false,
+        project_stage: "Start",
+        project_story: true,
         project_needs: "",
         project_faq: "",
         project_image: "",
-        is_open: "",
+        is_open: true,
     });
     
     
@@ -29,13 +29,16 @@ function CreateProjectForm () {
         }));
     }
 
-    const postData = async () => {        
+    const postData = async () => {   
+        const token = window.localStorage.getItem("token")
+     
         const response = await fetch(
         `${process.env.REACT_APP_API_URL}projects/createproject/`, 
         {
         method: "post",
         headers: {
             "Content-Type": "application/json",
+            'Authorization': `Token ${token}`
         },
         body: JSON.stringify(project),
         }
@@ -177,7 +180,7 @@ function CreateProjectForm () {
             <button 
                 type="submit"
                 // value={create_project}
-                onClick={handleSubmit}
+                onClick={ handleSubmit }
             >
             Submit
             </button>

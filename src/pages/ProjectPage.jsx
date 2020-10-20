@@ -5,6 +5,7 @@ import NeedsResources from "../components/ProjectNeeds/NeedsResources";
 import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
 import { Link} from "react-router-dom";
+// import dateFormat from "dateformat";
 
 function ProjectPage() {
     const [projectData, setProjectData] = useState({ projects: [], pledges: [], updates: [] });
@@ -14,9 +15,10 @@ function ProjectPage() {
         const token = window.localStorage.getItem("token")
 
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`, {
-           headers: {
-           'Authorization': `Token ${token}`
-           }
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Token ${token}`
+        },
         })
         .then((results) => {
             return results.json();
