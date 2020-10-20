@@ -5,8 +5,9 @@ import Nav from "./components/Nav/Nav";
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
 import LoginPage from './pages/LoginPage';
-import CreateProject from './components/Forms/CreateProjectForm';
 import CreateProjectPage from './pages/CreateProjectPage';
+import ErrorPage from './pages/ErrorPage';
+import ProjectsPage from './pages/ProjectsPage';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           <Route path="/projects/:id">
             <ProjectPage />
           </Route>
+          <Route path="/projects">
+            <ProjectsPage />
+          </Route>
           <Route path="/login">
             <LoginPage />
           </Route>
@@ -27,6 +31,7 @@ function App() {
           <Route path="/" exact>
             <HomePage />
           </Route>
+          <Route component={ErrorPage} />
         </Switch>
       </div>
     </Router>

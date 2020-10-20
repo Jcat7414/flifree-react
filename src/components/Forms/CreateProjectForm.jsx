@@ -65,14 +65,16 @@ function CreateProjectForm () {
                 type="text" 
                 id="project_name"
                 placeholder="Enter Project Name"
+                required
                 // value={project.project_name}
                 onChange={handleChange}
             />
             <br/>
-            <label htmlFor="project_intro">Write a short description of what you do and what you need help with: </label>
+            <label htmlFor="project_intro">Introduction: </label>
             <input
-                type="text"
+                type="textarea"
                 id="project_intro"
+                placeholder="Write a short description of what you do and what you need help with."
                 // value={project_intro}
                 onChange={handleChange}
             />
@@ -178,7 +180,7 @@ function CreateProjectForm () {
             <button 
                 type="submit"
                 // value={create_project}
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
             >
             Submit
             </button>
