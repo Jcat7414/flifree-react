@@ -9,6 +9,7 @@ function ProjectCard(props) {
             <Link to={`/projects/${projectData.id}`}>
                 <img src={ projectData.project_image } alt="" />
                 <h3>{ projectData.project_name }</h3>
+                <h4>{ projectData.founder }</h4>
             </Link>
         </div>
     );

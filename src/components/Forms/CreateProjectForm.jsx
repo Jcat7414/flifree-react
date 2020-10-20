@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 
 function CreateProjectForm () {
@@ -20,7 +19,6 @@ function CreateProjectForm () {
         is_open: "",
     });
     
-    const history = useHistory();
     
     const handleChange = (e) => {
         e.preventDefault();
@@ -33,7 +31,7 @@ function CreateProjectForm () {
 
     const postData = async () => {        
         const response = await fetch(
-        `${process.env.REACT_APP_API_URL}createproject/`, 
+        `${process.env.REACT_APP_API_URL}projects/createproject/`, 
         {
         method: "post",
         headers: {
@@ -49,7 +47,6 @@ function CreateProjectForm () {
         e.preventDefault();
         postData().then((response) => {
         window.localStorage.setItem("project", response.project);
-        history.pushState("/createproject");
         });
     };
 

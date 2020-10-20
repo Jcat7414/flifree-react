@@ -15,3 +15,6 @@ class NeedsExpertise extends Component {
 }
 
 export default NeedsExpertise
+
+// function ProjectCard(props) {
+//     const { projectData } = props;

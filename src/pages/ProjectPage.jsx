@@ -4,6 +4,7 @@ import NeedsFacilities from "../components/ProjectNeeds/NeedsFacilities";
 import NeedsResources from "../components/ProjectNeeds/NeedsResources";
 import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
+import { Link} from "react-router-dom";
 
 function ProjectPage() {
     const [projectData, setProjectData] = useState({ projects: [], pledges: [], updates: [] });
@@ -80,9 +81,9 @@ function ProjectPage() {
 
     return (
     <div>
-        <img src={ projectData.project_image } />
+        <img src={ projectData.project_image } alt="" />
         <h2>{ projectData.project_name }</h2>
-        <h3>{ projectData.founder }</h3>
+        <h3><Link to={`/users/${ projectData.owner }`}>{ projectData.founder }</Link></h3>
         <p>{ projectData.project_intro }</p>
         <NeedsFacilities projectData={ projectData } />
         <NeedsResources projectData={ projectData } />
@@ -92,7 +93,9 @@ function ProjectPage() {
         <IsOpen />
         <h3>Founder Story:</h3>
         <p>{ projectData.project_story }</p>
-        
+        {/* <img src={ projectData.owner.image } alt="" /> */}
+        <h3>Details of what is needed:</h3>
+        <p>{ projectData.project_needs }</p>
         <h3>FAQs:</h3>
         <p>{ projectData.project_faq }</p>
         <h3>Project Updates: </h3>
@@ -120,7 +123,7 @@ function ProjectPage() {
         </ul>
         <IsOpen />
         <p>Created on: { projectData.date_created }</p>
-        
+        <p>Return to <Link to="/projects">All Projects</Link></p>
     </div>
     );
 }

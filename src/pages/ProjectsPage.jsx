@@ -13,12 +13,13 @@ function ProjectsPage() {
             },
         })
         .then((results) => {
-        return results.json();
+            return results.json();
         })
         .then((data) => {
-        setProjectList(data);
+            setProjectList(data);
         });
     }, []);
+
 
     return (
         <div id="project-list">
