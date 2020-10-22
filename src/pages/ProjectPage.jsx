@@ -5,7 +5,7 @@ import NeedsResources from "../components/ProjectNeeds/NeedsResources";
 import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
 import { Link} from "react-router-dom";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 // import dateFormat from "dateformat";
 
 function ProjectPage() {
@@ -13,12 +13,12 @@ function ProjectPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token")
+        // const token = window.localStorage.getItem("token")
 
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
         headers: {
             "Content-Type": "application/json",
-            'Authorization': `Token ${token}`
+            // 'Authorization': `Token ${token}`
         },
         })
         .then((results) => {
@@ -82,14 +82,8 @@ function ProjectPage() {
         }
     };
 
-        const pdate = new Date(projectData.date_created)
-        const projectDate = pdate.getDate() + " " + pdate.getMonth  () + " " + pdate.getFullYear();
-
-        // const udate = new Date(updateData.update_date)
-        // const updateDate = udate.getDate() + " " + udate.getMonth  () + " " + udate.getFullYear();
-
-    console.log(projectDate)
-    // console.log(updateDate)
+    const pdate = new Date(projectData.date_created)
+    const projectDate = pdate.getDate() + "-" + pdate.getMonth() + "-" + pdate.getFullYear();
 
     return (
     <div>
@@ -105,7 +99,6 @@ function ProjectPage() {
         <IsOpen />
         <h3>Founder Story:</h3>
         <p>{ projectData.project_story }</p>
-        {/* <img src={ projectData.owner.image } alt="" /> */}
         <h3>Details of what is needed:</h3>
         <p>{ projectData.project_needs }</p>
         <h3>FAQs:</h3>
@@ -117,7 +110,6 @@ function ProjectPage() {
                     <li key={key}>
                         <h4>{ updateData.update_name }</h4>
                         <p>{ updateData.update_content }</p>
-                        <p>{ updateData.update_date }</p>
                     </li>
                 );
             })}

@@ -1,0 +1,14 @@
+.user-card {
+    width: 100%;
+    border: 1px solid black;
+    box-shadow: 0px 0px 5px gray;
+    background: #f0f0f0;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+.user-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}

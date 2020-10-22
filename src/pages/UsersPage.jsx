@@ -20,11 +20,15 @@ function UsersPage() {
     }, []);
 
     return (
-        <div id="user-list">
-            <h1>MOTIVATED MIGRANTS AND SUPER SUPPORTERS</h1>
-            {userList.map((userData, key) => {
-                return <UserCard key={key} userData={userData} />;
+        <div id="users">
+            <div>
+                <h1>MOTIVATED MIGRANTS AND SUPER SUPPORTERS</h1>
+            </div>
+            <div id="users-list">
+                {userList.map((userData, key) => {
+                    return <UserCard key={key} userData={userData} />;
             })}
+            </div>
         </div>
     );
 }

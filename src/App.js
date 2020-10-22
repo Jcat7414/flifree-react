@@ -13,6 +13,7 @@ import PledgePage from './pages/PledgePage';
 import PledgesPage from './pages/PledgesPage';
 import UserPage from "./pages/UserPage";
 import UsersPage from "./pages/UsersPage";
+import CreateUserPage from "./pages/CreateUserPage";
 import LoginPage from './pages/LoginPage';
 import CreateProjectPage from './pages/CreateProjectPage';
 import ErrorPage from './pages/ErrorPage';
@@ -50,14 +51,17 @@ function App() {
           <Route path="/pledges/:id">
             <PledgesPage />
           </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
           <Route path="/users/:id">
             <UserPage />
           </Route>
           <Route path="/users">
             <UsersPage />
+          </Route>
+          <Route path="/createuser">
+            <CreateUserPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
           </Route>
           <Route path="/createproject">
             <CreateProjectPage />

@@ -55,7 +55,7 @@ function CreateProjectForm () {
 
 
     return (
-        <form>
+        <form className="create-form">
             <h1>Create New Project</h1>
             <p>Enter the details for your project in the boxes below. If you are not sure what to write, enter TBC and we can edit it later.</p>
             <p>You need to be logged in to create a project. Click here to <Link to="/login">Login</Link></p>

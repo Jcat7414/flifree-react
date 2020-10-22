@@ -17,7 +17,8 @@ function Nav() {
                 <Link to="/login">Login</Link>
                 &nbsp;&nbsp;
                 <Link to="/createproject">Create Project</Link>
-                
+                &nbsp;&nbsp;
+                <Link to="/createuser">Sign Up</Link>
             </div>
         </nav>
     );

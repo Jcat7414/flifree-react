@@ -36,24 +36,27 @@ function LoginForm() {
         if (credentials.username && credentials.password) {
         postData().then((response) => {
         window.localStorage.setItem("token", response.token);
-        history.push("/");
+        history.push("/projects");
         });
         }
     };
 
     return (
-        <form>
+        <form className="login-form">
+            <h2>It is great to see you again!</h2>
+            <p>Log in to continue</p>
             <div>
-                <label htmlFor="username">Username: </label>
+                <label htmlFor="username">Enter your username: </label>
                 <input
                     type="text"
                     id="username"
-                    placeholder="Enter Username"
+                    placeholder="Username"
                     onChange={handleChange}
                 />
             </div>
+            &nbsp;
             <div>
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password">Enter your password: </label>
                 <input
                     type="password"
                     id="password"
@@ -61,7 +64,15 @@ function LoginForm() {
                     onChange={handleChange}
                 />
             </div>
-            <button type="submit" onClick={handleSubmit}>Login</button>
+            <p id="password-reset">Reset Password</p>
+            <div>
+                <button type="submit" onClick={handleSubmit}>Login</button>
+            </div>
+            <p>New to Fli Free? Sign Up</p>
+            <div>
+                <button type="button" href="/about">Learn more about Fli Free</button>
+            </div>
+            &nbsp;
         </form>
     );
 }
