@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function CreateUserForm() {
     const [user, setNewUser] = useState({
@@ -16,7 +16,7 @@ function CreateUserForm() {
         terms_privacy: "",
     });
 
-    const handleChange = (e) => {
+        const handleChange = (e) => {
         e.preventDefault();
         const { id, value } = e.target;
         setNewUser((prevUser) => ({
@@ -25,15 +25,18 @@ function CreateUserForm() {
         }));
     }
 
+    const history = useHistory();
+
     const postData = async() => {
-        // const token = window.localStorage.getItem("token")
+        const username = window.localStorage.getItem("username")
 
         const response = await fetch(
-        `${process.env.REACT_APP_API_URL}users/createuser`,
+        `${process.env.REACT_APP_API_URL}users/createuser/`,
         {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
+                // "Accept": "application/json",
                 // "Authorization": `Token ${token}`
             },
             body: JSON.stringify(user),
@@ -45,7 +48,8 @@ function CreateUserForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         postData().then((response) => {
-            window.localStorage.setItem("user", response.user);
+        window.localStorage.setItem("username", response.username);
+        history.push("/login");
         });
     };
 
@@ -99,6 +103,15 @@ function CreateUserForm() {
                 onChange={handleChange}
             />
             <br/>
+            <label htmlFor="bio">Tell us a bit about you?</label>
+            <input
+                type="text"
+                id="bio"
+                placeholder=""
+                required
+                onChange={handleChange}
+            />
+            <br/>
             <label htmlFor="image">Add a Profile Photo</label>
             <input
                 type="url"
@@ -128,7 +141,8 @@ function CreateUserForm() {
             <label htmlFor="newsletter_signup">Sign me up to the Fli Free newsletter</label>
             <input
                 type="checkbox"
-                id="newsletter"
+                id="newsletter_signup"
+                required
                 onChange={handleChange}
             />
             <br/>

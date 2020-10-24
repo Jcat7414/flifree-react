@@ -15,9 +15,10 @@ import UserPage from "./pages/UserPage";
 import UsersPage from "./pages/UsersPage";
 import CreateUserPage from "./pages/CreateUserPage";
 import LoginPage from './pages/LoginPage';
+import LogoutPage from './pages/LogoutPage';
 import CreateProjectPage from './pages/CreateProjectPage';
+import EditProjectPage from './pages/EditProjectPage';
 import ErrorPage from './pages/ErrorPage';
-
 import Footer from './components/Nav/Footer';
 
 function App() {
@@ -45,10 +46,10 @@ function App() {
           <Route path="/projects">
             <ProjectsPage />
           </Route>
-          <Route path="/pledges">
+          <Route path="/pledges/:id">
             <PledgePage />
           </Route>
-          <Route path="/pledges/:id">
+          <Route path="/pledges" exact>
             <PledgesPage />
           </Route>
           <Route path="/users/:id">
@@ -63,8 +64,14 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <Route path="/logout">
+            <LogoutPage />
+          </Route>
           <Route path="/createproject">
             <CreateProjectPage />
+          </Route>
+          <Route path="/editproject">
+            <EditProjectPage />
           </Route>
           <Route path="/" exact>
             <HomePage />

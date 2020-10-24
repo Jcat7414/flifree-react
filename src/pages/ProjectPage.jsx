@@ -4,6 +4,7 @@ import NeedsFacilities from "../components/ProjectNeeds/NeedsFacilities";
 import NeedsResources from "../components/ProjectNeeds/NeedsResources";
 import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
+import ProjectStage from "../components/ProjectNeeds/ProjectStage";
 import { Link} from "react-router-dom";
 // import { render } from "@testing-library/react";
 // import dateFormat from "dateformat";
@@ -28,41 +29,7 @@ function ProjectPage() {
             setProjectData(data);
         });
     }, [id]);
-
-    class ProjectStage extends Component {
-        constructor(props) {
-            super(props)
-    
-            this.state = {
-                isStart: projectData.project_stage === "Start",
-                isTrial: projectData.project_stage === "Trial",
-                isAdjust: projectData.project_stage === "Adjust",
-                isRetail: projectData.project_stage === 'Retail'
-            }
-        }
-    
-        render() {
-            if (this.state.isStart)  {
-                return (
-                    <div>Stage: Start</div>
-                )
-            } else {
-                if (this.state.isTrial) {
-                    return (
-                        <div>Stage: Trial</div>
-                    )
-                } else {
-                if (this.state.isAdjust) {
-                    return (
-                        <div>Stage: Adjust</div>
-                    )
-                }
-            }}
-            return (
-                <div>Stage: Retail</div>
-            )
-        };
-    };
+  
 
     class IsOpen extends Component {
         constructor(props) {
@@ -85,6 +52,9 @@ function ProjectPage() {
     const pdate = new Date(projectData.date_created)
     const projectDate = pdate.getDate() + "-" + pdate.getMonth() + "-" + pdate.getFullYear();
 
+    const udate = new Date(projectData.update_date)
+    console.log(udate)
+
     return (
     <div>
         <img src={ projectData.project_image } alt="" />
@@ -95,7 +65,9 @@ function ProjectPage() {
         <NeedsResources projectData={ projectData } />
         <NeedsExposure projectData={ projectData } />
         <NeedsExpertise projectData={ projectData } />
-        <ProjectStage />
+        {/* <ProjectStage /> */}
+        <ProjectStage projectData={ projectData } />
+
         <IsOpen />
         <h3>Founder Story:</h3>
         <p>{ projectData.project_story }</p>
@@ -127,6 +99,10 @@ function ProjectPage() {
         </ul>
         <IsOpen />
         <p>Created on: { projectDate }</p>
+        <br/>
+        {/* if the logged in user is the owner, then show the option to amend the project */}
+        {/* add a link to the work edit */}
+        <p>Edit this project</p>
         <p>Return to <Link to="/projects">All Projects</Link></p>
     </div>
     );

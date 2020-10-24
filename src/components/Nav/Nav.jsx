@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Logout from "../Forms/LogoutForm";
 
 function Nav() {
+    // const history = useHistory();
+    // const handleLogout=() => {
+    //     logout()(dispatch);
+    // }
+
     return (
         <nav>
             <div>
@@ -19,6 +25,8 @@ function Nav() {
                 <Link to="/createproject">Create Project</Link>
                 &nbsp;&nbsp;
                 <Link to="/createuser">Sign Up</Link>
+                &nbsp;&nbsp;
+                <button type="button"><Link to="/logout">Logout</Link></button>
             </div>
         </nav>
     );
