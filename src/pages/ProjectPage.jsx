@@ -102,8 +102,8 @@ function ProjectPage() {
         <br/>
         {/* if the logged in user is the owner, then show the option to amend the project */}
         {/* add a link to the work edit */}
-        <p>Edit this project</p>
-        <p>Return to <Link to="/projects">All Projects</Link></p>
+        <p>Edit this <Link to="/editproject/${projectData.id}">project</Link></p>
+        <p>Return to <Link to="/projects">All This Projects</Link></p>
     </div>
     );
 }

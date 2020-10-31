@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function EditProjectForm() {
     const [project, setEditedProject] = useState({
@@ -18,6 +18,7 @@ function EditProjectForm() {
         is_open: "",
     });
     
+    const { id } = useParams();
     
     const handleChange = (e) => {
         e.preventDefault();
@@ -32,7 +33,7 @@ function EditProjectForm() {
         const token = window.localStorage.getItem("token")
      
         const response = await fetch(
-        `${process.env.REACT_APP_API_URL}projects/createproject/`, 
+        `${process.env.REACT_APP_API_URL}projects/${id}/`, 
         {
         method: "put",
         headers: {
