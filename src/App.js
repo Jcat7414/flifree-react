@@ -19,6 +19,7 @@ import LogoutPage from './pages/LogoutPage';
 import CreateProjectPage from './pages/CreateProjectPage';
 import EditProjectPage from './pages/EditProjectPage';
 import CreatePledgePage from './pages/CreatePledgePage';
+import ConfirmPledgePage from './pages/ConfirmPledgePage';
 import CreateUpdatePage from './pages/CreateUpdatePage';
 import ErrorPage from './pages/ErrorPage';
 import UnauthPage from './pages/UnauthPage';
@@ -78,6 +79,9 @@ function App() {
           </Route>
           <Route path="/createpledge">
             <CreatePledgePage />
+          </Route>
+          <Route path="/confirmpledge">
+            <ConfirmPledgePage />
           </Route>
           <Route path="/createupdate">
             <CreateUpdatePage />

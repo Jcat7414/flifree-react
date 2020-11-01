@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import UnauthMessage from "../../pages/UnauthPage";
 
 const EditProjectForm = (props) => {
     const [project, setProject] = useState(props.currentProject)
     const { id } = useParams();
     const history = useHistory();
-    const [errorCode, setErrorCode] = useState();
-
+    var statuscode = 0;
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -27,33 +25,25 @@ const EditProjectForm = (props) => {
         },
         body: JSON.stringify(project),
         })
-        ;
-        return response.json();
+        .then((response) => {
+            statuscode=(response.status);
+            console.log(statuscode);
+            return response.json();
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // if authorised (credentials.username === project.owner)
-            postData().then((response) => {
-            setProject(response)
-            debugger
-            history.push(`/projects/${id}`)
-        })
-        // .then((results) => {
-        //     console.log(results)
-        //     return results
-        //     setErrorCode(results.status)
-        //     // return results.json();
-        // })
-        // .then((data) => {
-        //     if (data.status === 403) {
-        //     {history.push(`/unauthorised`)}
-        // } else {
-        //     return (
-        //         history.push(`/projects/${id}`)
-        //     )
-        // };
-        // })
+        postData()
+        .then((response) => {
+            if(statuscode === 201) {
+                setProject(response);
+                history.push(`/projects/${id}`);
+            } else {
+                console.log(statuscode);
+                history.push("/unauthorised");
+            };
+        });
     };
 
 

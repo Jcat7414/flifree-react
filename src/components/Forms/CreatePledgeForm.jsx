@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function CreatePledgeForm() {
     const [pledge, setNewPledge] = useState({
@@ -15,6 +15,8 @@ function CreatePledgeForm() {
         is_fulfilled: false,
         project: "",
     });
+
+    const history = useHistory();
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -44,7 +46,8 @@ function CreatePledgeForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         postData().then((response) => {
-            window.localStorage.setItem("project", response.project);
+        window.localStorage.setItem("project", response.project);
+        history.push("/confirmpledge")
         });
     };
 

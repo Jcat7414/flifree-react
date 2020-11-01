@@ -6,7 +6,6 @@ function CreateUpdateForm() {
         project_id: "",
         update_name: "",
         update_content: "",
-        update_date: "",
         author: "",
         owner: "",
     });
@@ -84,13 +83,6 @@ function CreateUpdateForm() {
                 onChange={handleChange}
             />
             <br/>
-            <label htmlFor="update_date">Select the date to publish your update</label>
-            <input
-                type="text"
-                id="update_date"
-                onChange={handleChange}
-            />
-            <br/>
             <br/>
 
             <h3>Check the details below are correct, then Submit.</h3>
@@ -99,7 +91,6 @@ function CreateUpdateForm() {
             <p>Update Details: { update.update_content }</p>
             <p>Your Username: { update.owner }</p>
             <p>Your Full Name: { update.author }</p>
-            <p>Date of Update: { update.update_date }</p>
 
             Are you ready to publish your update?
             <button

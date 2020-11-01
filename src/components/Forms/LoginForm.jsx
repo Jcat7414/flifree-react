@@ -5,7 +5,9 @@ function LoginForm() {
     const [credentials, setCredentials] = useState({
         username: "",
         password: "",
+        user_id: "",
     });
+
 
     const history = useHistory();
 
@@ -37,6 +39,7 @@ function LoginForm() {
         postData().then((response) => {
         window.localStorage.setItem("token", response.token);
         window.localStorage.setItem("user", credentials.username);
+        // window.localStorage.setItem("user_id", credentials.user_id);
         history.push("/projects");
         });
         }
