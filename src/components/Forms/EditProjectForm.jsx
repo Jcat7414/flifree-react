@@ -1,56 +1,59 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
+import UnauthMessage from "../../pages/UnauthPage";
 
-function EditProjectForm() {
-    const [project, setEditedProject] = useState({
-        project_name: "",
-        project_intro: "",
-        project_goal: "",
-        needs_facilities: "",
-        needs_resources: "",
-        needs_exposure: "",
-        needs_expertise: "",
-        project_stage: "",
-        project_story: "",
-        project_needs: "",
-        project_faq: "",
-        project_image: "",
-        is_open: "",
-    });
-    
+const EditProjectForm = (props) => {
+    const [project, setProject] = useState(props.currentProject)
     const { id } = useParams();
-    
+    const history = useHistory();
+    const [errorCode, setErrorCode] = useState();
+
+
     const handleChange = (e) => {
         e.preventDefault();
         const { id, value } = e.target;
-        setEditedProject((prevProject) => ({
-            ...prevProject,
-            [id]: value,
-        }));
+        setProject({ ...project, [id]: value })
     }
 
     const postData = async () => {   
         const token = window.localStorage.getItem("token")
      
         const response = await fetch(
-        `${process.env.REACT_APP_API_URL}projects/${id}/`, 
-        {
-        method: "put",
+        `${process.env.REACT_APP_API_URL}projects/${id}/`, {
+        method: "PUT",
         headers: {
             "Content-Type": "application/json",
             'Authorization': `Token ${token}`
         },
         body: JSON.stringify(project),
-        }
-        );
+        })
+        ;
         return response.json();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        postData().then((response) => {
-        window.localStorage.setItem("project", response.project);
-        });
+        // if authorised (credentials.username === project.owner)
+            postData().then((response) => {
+            setProject(response)
+            debugger
+            history.push(`/projects/${id}`)
+        })
+        // .then((results) => {
+        //     console.log(results)
+        //     return results
+        //     setErrorCode(results.status)
+        //     // return results.json();
+        // })
+        // .then((data) => {
+        //     if (data.status === 403) {
+        //     {history.push(`/unauthorised`)}
+        // } else {
+        //     return (
+        //         history.push(`/projects/${id}`)
+        //     )
+        // };
+        // })
     };
 
 
@@ -64,7 +67,7 @@ function EditProjectForm() {
             <input 
                 type="text" 
                 id="project_name"
-                placeholder="Enter Project Name"
+                placeholder="{ project.project_name }"
                 required
                 // value={project.project_name}
                 onChange={handleChange}
@@ -186,7 +189,7 @@ function EditProjectForm() {
             </button>
             <br/>
 
-            <p>Project Name: { project.project_name }</p>
+            {/* <p>Project Name: { project.project_name }</p>
             <p>Project Intro: { project.project_intro }</p>
             <p>Project Goal: { project.project_goal }</p>
             <p>Needs Facilities: { project.needs_facilities ? "true" : "false" }</p>
@@ -198,7 +201,7 @@ function EditProjectForm() {
             <p>Project Story: { project.project_story }</p>
             <p>Project Needs: { project.project_needs }</p>
             <p>Project FAQ: { project.project_faq }</p>
-            <p>Project Image: { project.project_image }</p>
+            <p>Project Image: { project.project_image }</p> */}
         </form>
     );
 }

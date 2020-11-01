@@ -58,7 +58,7 @@ function CreateProjectForm () {
         <form className="create-form">
             <h1>Create New Project</h1>
             <p>Enter the details for your project in the boxes below. If you are not sure what to write, enter TBC and we can edit it later.</p>
-            <p>You need to be logged in to create a project. Click here to <Link to="/login">Login</Link></p>
+            <p>You need to be logged in to create a project. Click here to <Link to="/login">Login</Link>.</p>
 
             <label htmlFor="project_name">What is your project name? </label>
             <input 
@@ -66,7 +66,6 @@ function CreateProjectForm () {
                 id="project_name"
                 placeholder="Enter Project Name"
                 required
-                // value={project.project_name}
                 onChange={handleChange}
             />
             <br/>
@@ -75,7 +74,6 @@ function CreateProjectForm () {
                 type="textarea"
                 id="project_intro"
                 placeholder="Write a short description of what you do and what you need help with."
-                // value={project_intro}
                 onChange={handleChange}
             />
             <br/>
@@ -83,7 +81,6 @@ function CreateProjectForm () {
             <input
                 type="number"
                 id="project_goal"
-                // value={project_goal}
                 onChange={handleChange}
             />
             <br/>
@@ -92,7 +89,6 @@ function CreateProjectForm () {
             <input
                 type="checkbox"
                 id="needs_facilities"
-                // checked="needs_facilities"
                 onChange={handleChange}
                 />
             &nbsp;
@@ -100,7 +96,6 @@ function CreateProjectForm () {
             <input
                 type="checkbox"
                 id="needs_resources"
-                // checked={needs_resources}
                 onChange={handleChange}
                 />
             &nbsp;
@@ -147,7 +142,6 @@ function CreateProjectForm () {
             <input
                 type="text"
                 id="project_story"
-                // value={project_story}
                 onChange={handleChange}
             />
             <br/>
@@ -155,7 +149,6 @@ function CreateProjectForm () {
             <input
                 type="text"
                 id="project_needs"
-                // value={project_needs}
                 onChange={handleChange}
             />
             <br/>
@@ -163,7 +156,6 @@ function CreateProjectForm () {
             <input
                 type="text"
                 id="project_faq"
-                // value={project_faq}
                 onChange={handleChange}
             />
             <br/>
@@ -171,21 +163,11 @@ function CreateProjectForm () {
             <input
                 type="url"
                 id="project_image"
-                // value={project_image}
                 onChange={handleChange}
             />
             <br/>
             <br/>
-            Submit your project:
-            <button 
-                type="submit"
-                // value={create_project}
-                onClick={ handleSubmit }
-            >
-            Submit
-            </button>
-            <br/>
-
+            <h3>Check the details below are correct, then click Submit to publish your project.</h3>
             <p>Project Name: { project.project_name }</p>
             <p>Project Intro: { project.project_intro }</p>
             <p>Project Goal: { project.project_goal }</p>
@@ -199,6 +181,16 @@ function CreateProjectForm () {
             <p>Project Needs: { project.project_needs }</p>
             <p>Project FAQ: { project.project_faq }</p>
             <p>Project Image: { project.project_image }</p>
+
+            <br/>
+            Submit your project:
+            <button 
+                type="submit"
+                onClick={ handleSubmit }
+            >
+            Submit
+            </button>
+            <br/>
         </form>
     );
 }

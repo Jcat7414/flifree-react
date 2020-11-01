@@ -1,24 +1,27 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./components/Nav/Nav";
-import HomePage from "./pages/HomePage";
+import Nav from './components/Nav/Nav';
+import HomePage from './pages/HomePage';
 import About from './pages/AboutPage';
 import Privacy from './pages/PrivacyPolicyPage';
 import Terms from './pages/TermsConditionsPage';
 import ContactPage from './pages/ContactPage';
-import ProjectPage from "./pages/ProjectPage";
+import ProjectPage from './pages/ProjectPage';
 import ProjectsPage from './pages/ProjectsPage';
 import PledgePage from './pages/PledgePage';
 import PledgesPage from './pages/PledgesPage';
 import UserPage from "./pages/UserPage";
-import UsersPage from "./pages/UsersPage";
-import CreateUserPage from "./pages/CreateUserPage";
+import UsersPage from './pages/UsersPage';
+import CreateUserPage from './pages/CreateUserPage';
 import LoginPage from './pages/LoginPage';
 import LogoutPage from './pages/LogoutPage';
 import CreateProjectPage from './pages/CreateProjectPage';
 import EditProjectPage from './pages/EditProjectPage';
+import CreatePledgePage from './pages/CreatePledgePage';
+import CreateUpdatePage from './pages/CreateUpdatePage';
 import ErrorPage from './pages/ErrorPage';
+import UnauthPage from './pages/UnauthPage';
 import Footer from './components/Nav/Footer';
 
 function App() {
@@ -70,8 +73,17 @@ function App() {
           <Route path="/createproject">
             <CreateProjectPage />
           </Route>
-          <Route path="/editproject">
+          <Route path="/editproject/:id">
             <EditProjectPage />
+          </Route>
+          <Route path="/createpledge">
+            <CreatePledgePage />
+          </Route>
+          <Route path="/createupdate">
+            <CreateUpdatePage />
+          </Route>
+          <Route path="/unauthorised">
+            <UnauthPage />
           </Route>
           <Route path="/" exact>
             <HomePage />

@@ -6,20 +6,15 @@ import NeedsExposure from "../components/ProjectNeeds/NeedsExposure";
 import NeedsExpertise from "../components/ProjectNeeds/NeedsExpertise";
 import ProjectStage from "../components/ProjectNeeds/ProjectStage";
 import { Link} from "react-router-dom";
-// import { render } from "@testing-library/react";
-// import dateFormat from "dateformat";
 
 function ProjectPage() {
     const [projectData, setProjectData] = useState({ projects: [], pledges: [], updates: [] });
     const { id } = useParams();
 
     useEffect(() => {
-        // const token = window.localStorage.getItem("token")
-
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}/`, {
         headers: {
             "Content-Type": "application/json",
-            // 'Authorization': `Token ${token}`
         },
         })
         .then((results) => {
@@ -43,7 +38,7 @@ function ProjectPage() {
         render() {
             return (
             this.state.isOpen ?
-                <div><a href="../login/">Pledge your support</a></div> :
+                <div><a href="../createpledge/">Pledge your support</a></div> :
                 <div>This project is currently closed for new pledges.</div>
             )
         }
@@ -101,8 +96,8 @@ function ProjectPage() {
         <p>Created on: { projectDate }</p>
         <br/>
         {/* if the logged in user is the owner, then show the option to amend the project */}
-        {/* add a link to the work edit */}
-        <p>Edit this <Link to="/editproject/${projectData.id}">project</Link></p>
+        <p>Edit this <Link to={`/editproject/${ projectData.id }`}>project</Link></p>
+        <p>Write an <Link to="/createupdate">Update</Link> for this project.</p>
         <p>Return to <Link to="/projects">All This Projects</Link></p>
     </div>
     );

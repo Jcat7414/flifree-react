@@ -36,6 +36,7 @@ function LoginForm() {
         if (credentials.username && credentials.password) {
         postData().then((response) => {
         window.localStorage.setItem("token", response.token);
+        window.localStorage.setItem("user", credentials.username);
         history.push("/projects");
         });
         }
