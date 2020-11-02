@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Forms.css"
+
 
 
 function CreateProjectForm () {
@@ -56,7 +58,7 @@ function CreateProjectForm () {
 
     return (
         <form className="create-form">
-            <h1>Create New Project</h1>
+            <h1>Create a New Project</h1>
             <p>Enter the details for your project in the boxes below. If you are not sure what to write, enter TBC and we can edit it later.</p>
             <p>You need to be logged in to create a project. Click here to <Link to="/login">Login</Link>.</p>
 
@@ -73,7 +75,7 @@ function CreateProjectForm () {
             <input
                 type="textarea"
                 id="project_intro"
-                placeholder="Write a short description of what you do and what you need help with."
+                placeholder="Write a short description of what you do."
                 onChange={handleChange}
             />
             <br/>
@@ -84,7 +86,7 @@ function CreateProjectForm () {
                 onChange={handleChange}
             />
             <br/>
-            What do you NEED help with? (tick all that apply):&nbsp;
+            What do you NEED help with? (tick all that apply):<br/>
             <label htmlFor="needs_facilities">Facilities: </label>
             <input
                 type="checkbox"
@@ -121,7 +123,8 @@ function CreateProjectForm () {
                 <option value="Retail">Retail</option>
             </select>
             <br/>
-            Are you ready to open your project for pledges?&nbsp;
+            Are you ready to open your project for pledges?
+            <br/>
             <label>Yes: </label>
             <input 
                 type="radio"
@@ -183,7 +186,7 @@ function CreateProjectForm () {
             <p>Project Image: { project.project_image }</p>
 
             <br/>
-            Submit your project:
+            <p>Are you ready to submit your project?</p>
             <button 
                 type="submit"
                 onClick={ handleSubmit }

@@ -1,33 +1,27 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import Logout from "../Forms/LogoutForm";
 
 function Nav() {
-    // const history = useHistory();
-    // const handleLogout=() => {
-    //     logout()(dispatch);
-    // }
+    function handleClick(e) {
+        e.preventDefault();
+    }
 
     return (
         <nav>
-            <div>
-                FLI FREE
-            </div>
-            <div>
-                <Link to="/">Home</Link>
-                &nbsp;&nbsp;
-                <Link to="/projects">Projects</Link>
-                &nbsp;&nbsp;
-                <Link to="/about">About</Link>
-                &nbsp;&nbsp;
-                <Link to="/login">Login</Link>
-                &nbsp;&nbsp;
-                <Link to="/createproject">Create Project</Link>
-                &nbsp;&nbsp;
-                <Link to="/createuser">Sign Up</Link>
-                &nbsp;&nbsp;
-                <button type="button"><Link to="/logout">Logout</Link></button>
-            </div>
+            <ul>
+                <li className="logo"><Link to="/"><img src="https://res.cloudinary.com/flifree/image/upload/v1604306955/fli_free_ih8xj0.png" alt="fli free logo"></img></Link></li>
+                <li className="dropdown">
+                    <a href="#" onClick={handleClick} className="dropbtn">Menu</a>
+                    <div className="dropdown-content">
+                        <Link to="/about">About</Link>
+                        <Link to="/projects">Projects</Link>
+                        <Link to="/login">Login</Link>
+                        <Link to="/createuser">Sign Up</Link>
+                        <Link to="/createproject">Create Project</Link>
+                        <Link to="/logout">Logout</Link>
+                    </div>
+                </li>
+            </ul>
         </nav>
     );
 }
