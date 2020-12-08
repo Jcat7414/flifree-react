@@ -31,9 +31,6 @@ function ProjectPage() {
     const pdate = new Date(projectData.date_created)
     const projectDate = pdate.getDate() + "-" + pdate.getMonth() + "-" + pdate.getFullYear();
 
-    const udate = new Date(projectData.update_date)
-    console.log(udate)
-
     return (
     <div>
         <img src={ projectData.project_image } alt="" />

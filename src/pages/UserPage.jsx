@@ -6,7 +6,6 @@ function UserPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        const token = window.localStorage.getItem("token")
 
         fetch(`${process.env.REACT_APP_API_URL}users/${id}`, {
             headers: {
@@ -22,14 +21,17 @@ function UserPage() {
         });
     }, [id]);
 
+    window.localStorage.setItem("ownerUserName", userData.username);
+    window.localStorage.setItem("ownerFirstName", userData.first_name);
+
     return (
         <div>
             <img src={ userData.image } alt="" />
             <h2>{ userData.first_name }&nbsp;{ userData.last_name }</h2>
             <p>{ userData.location }</p>
             <p>{ userData.bio }</p>
-            <p>See Projects for <Link to={`/projects/owner/${userData.username}`}>{ userData.first_name }</Link></p>
-            <p>See Pledges by <Link to={`/pledges/${userData.username}`}>{ userData.first_name }</Link></p>
+            <p>See Projects for <Link to={`/projectsby/${userData.username}`}>{ userData.first_name }</Link></p>
+            <p>See Pledges by <Link to={`/pledgesby/${userData.username}`}>{ userData.first_name }</Link></p>
 
         </div>
     );
