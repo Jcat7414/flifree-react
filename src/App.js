@@ -9,8 +9,10 @@ import Terms from './pages/TermsConditionsPage';
 import ContactPage from './pages/ContactPage';
 import ProjectPage from './pages/ProjectPage';
 import ProjectsPage from './pages/ProjectsPage';
+import ProjectsByPage from './pages/ProjectsByUser';
 import PledgePage from './pages/PledgePage';
 import PledgesPage from './pages/PledgesPage';
+import PledgesByPage from './pages/PledgesByUser';
 import UserPage from "./pages/UserPage";
 import UsersPage from './pages/UsersPage';
 import CreateUserPage from './pages/CreateUserPage';
@@ -44,11 +46,17 @@ function App() {
           <Route path="/contact">
             <ContactPage />
           </Route>
+          <Route path="/projectsby/:username">
+            <ProjectsByPage />
+          </Route>
           <Route path="/projects/:id">
             <ProjectPage />
           </Route>
-          <Route path="/projects">
+          <Route path="/projects" exact>
             <ProjectsPage />
+          </Route>
+          <Route path="/pledgesby/:username">
+            <PledgesByPage />
           </Route>
           <Route path="/pledges/:id">
             <PledgePage />
